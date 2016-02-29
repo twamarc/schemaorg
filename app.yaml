@@ -1,6 +1,8 @@
 application: schemaorgae
 #application: webschemas
 #application: sdo-phobos
+application: sdo-deimos
+
 
 version: 1
 runtime: python27
