@@ -27,13 +27,19 @@ See the draft <b><a href="{{staticPath}}/docs/releases.html">releases</a></b> pa
 {% endif %}
 
 
-{% if ENABLE_HOSTED_EXTENSIONS and host_ext == "bib" %}
+{% if ENABLE_HOSTED_EXTENSIONS and extComment != "" %}
+  {{ ext.overview(name=extName, abbrev=host_ext) }}
+  <p>
+	  {{extComment |safe}}
+      <br/><br/>Extension Version: {{extVers}}
+  </p>
+
+{% elif ENABLE_HOSTED_EXTENSIONS and host_ext == "bib" %}
   {{ ext.overview(name="Bibliographic Extension", abbrev="bib") }}
   <p>
   You are viewing the Bibliographic Extension within <a href="http://schema.org/">schema.org</a>.
   It defines terms such as <a href="/Audiobook">Audiobook</a>, <a href="/Thesis">Thesis</a>, <a href="/ComicStory">ComicStory</a>, and  <a href="/workTranslation">workTranslation</a>.
    For more details see the W3C BibExtend Community Group's <a href="http://www.w3.org/community/schemabibex/wiki/Bib.schema.org-1.0">wiki</a>.
-  <br/>This should be considered a pre-final preview release; final changes may be made after wider <a href="https://github.com/schemaorg/schemaorg/issues/699">community review</a>.
   </p>
 
 {% elif ENABLE_HOSTED_EXTENSIONS and host_ext == "auto" %}
@@ -42,7 +48,6 @@ See the draft <b><a href="{{staticPath}}/docs/releases.html">releases</a></b> pa
   <p>  You are viewing the Auto Extension within <a href="http://schema.org/">schema.org</a>.
   It defines terms such as <a href="/MotorizedBicycle">MotorizedBicycle</a> and adds terms to <a href="/Car">Car</a>. For more details
   see the W3C <a href="https://www.w3.org/community/gao/">Automotive Ontology Working Group</a>.
-  <br/>This should be considered a pre-final preview release; final changes may be made after wider <a href="https://github.com/schemaorg/schemaorg/issues/704">community review</a>.
 </p>
 
   <p><br/></p>
