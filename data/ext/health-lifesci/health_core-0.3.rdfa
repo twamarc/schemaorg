@@ -17,12 +17,33 @@
 
 <body>
 
+  <div resource="http://health-lifesci.schema.org/">
+      <span property="rdfs:comment">You are viewing the Health and Lifesciences extension within [schema.org](http://schema.org).
+It defines many medical terms such as  [[MedicalCondition]], [[AnatomicalStructure]] and [[MedicalSpecialty]]. See full list below.
+
+The schema.org [medical vocabulary](/docs/meddocs.html) was [originally created](http://blog.schema.org/2012/06/health-and-medical-vocabulary-for.html) in collaboration with [WikiDoc](http://www.wikidoc.org/index.php/Main_Page) and others. Recent improvements including the migration into the health-lifesci extension has been led by the Healthcare Schema ([schemed](https://www.w3.org/community/schemed/)) community group at W3C.
+The health-lifesci schema.org extension is [available](https://github.com/schemaorg/schemaorg/issues/1116) for other collaborative schema.org extensions in 
+topics centred on healthcare, medicine and the lifesciences (e.g. see also [Bioschemas](https://github.com/schemaorg/schemaorg/issues/1028), and
+the [pending](http://pending.schema.org/) proposals for describing [US healthcare insurance networks](https://github.com/schemaorg/schemaorg/issues/1062)).
+</span>
+      <span property="schema:name">Health and Lifesciences Extension</span>
+      <span property="schema:softwareVersion">0.8</span>
+  </div>
+
 
 <h1>Health Schema Extension </h1>
 <hr />
 <p vocab="http://schema.org" prefix="http://health-lifesci.schema.org/">Default vocabulary prefix: 'health:'</p>
 <p> <span property="schema:softwareVersion">health-lifesci.schema.org Version 0.2</span> </p>
 <hr/>
+
+<h2>Annotations on core terms</h2>
+
+<div typeof="rdf:Property" resource="http://schema.org/sponsor">
+  <!-- a core term but annotated in health-lifesci to work with MedicalStudy. -->
+  <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/MedicalStudy"> health:MedicalStudy</a></span>
+  <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Organization"> schema:Organization</a></span>
+</div>
 
 <h2>Classes</h2>
 
@@ -81,14 +102,6 @@
   <span property="rdfs:comment">An alternative, closely-related condition typically considered later in the differential diagnosis process along with the signs that are used to distinguish it.</span>
   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalIntangible"> health:MedicalIntangible </a></span>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-</div>
-
-<div typeof="rdfs:Class" resource="http://schema.org/Dentist">
-  <span class="h" property="rdfs:label"> health:Dentist</span>
-  <span property="rdfs:comment">A dentist.</span>
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalBusiness"> health:MedicalBusiness</a></span>
-  <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/ProfessionalService"> schema:ProfessionalService</a></span>
 </div>
 
 <div typeof="rdfs:Class" resource="http://schema.org/DiagnosticLab">
@@ -423,17 +436,19 @@
 <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
 </div>
 
+<!-- merged with following
 <div typeof="http://schema.org/MedicalSpecialty" resource="http://schema.org/Radiograpy">
   <span class="h" property="rdfs:label"> health:Radiograpy</span>
-  <span property="rdfs:comment">Radiography is the process or occupation of taking radiographs to assist in medical examinations.</span>
+  <span property="rdfs:comment">Radiography is the process or occupation of taking radiographs to assist in medical examinations. Typo, see [[Radiography]]</span>
   <link property="http://schema.org/supersededBy" href="http://schema.org/Radiography"/>
 <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-</div>
+</div> -->
 
 <div typeof="http://schema.org/MedicalSpecialty" resource="http://schema.org/Radiography">
   <span class="h" property="rdfs:label"> health:Radiography</span>
-  <span property="rdfs:comment">Radiography is the process or occupation of taking radiographs to assist in medical examinations.</span>
-<link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
+  <span property="rdfs:comment">Radiography is an imaging technique that uses electromagnetic radiation other than visible light, especially X-rays, to view the internal structure of a non-uniformly composed and opaque object such as the human body. Radiography is the process or occupation of taking radiographs to assist in medical examinations.</span>
+  <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
+  <span>Subclass of: <a property="rdf:type" href="http://schema.org/MedicalImagingTechnique"> health:MedicalImaging</a></span>
 </div>
 
 <div typeof="http://schema.org/MedicalSpecialty" resource="http://schema.org/Renal">
@@ -951,11 +966,6 @@
 <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
 </div>
 
-<div typeof="http://schema.org/PhysicalExam" resource="http://schema.org/VitalSign">
-  <span class="h" property="rdfs:label"> health:VitalSign</span>
-  <span property="rdfs:comment">Vital signs  assessment with clinical examination.</span>
-<link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-</div>
 
 <div typeof="rdfs:Class" resource="http://schema.org/ImagingTest">
   <span class="h" property="rdfs:label"> health:ImagingTest</span>
@@ -1036,16 +1046,6 @@
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalOrganization"> health:MedicalOrganization</a></span>
   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalBusiness"> health:MedicalBusiness</a></span>
-</div>
-
-<div typeof="rdfs:Class" resource="http://schema.org/Hospital">
-  <span class="h" property="rdfs:label"> health:Hospital</span>
-  <span property="rdfs:comment">A hospital.</span>
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/CivicStructure"> schema:CivicStructure</a></span>
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/EmergencyService"> schema:EmergencyService</a></span>
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalOrganization"> health:MedicalOrganization</a></span>
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalBusiness"> health:MedicalBusiness</a></span>
-  <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
 </div>
 
 <div typeof="rdfs:Class" resource="http://schema.org/MedicalCode">
@@ -1177,7 +1177,7 @@
 
 <div typeof="rdfs:Class" resource="http://schema.org/MedicalBusiness">
   <span class="h" property="rdfs:label"> health:MedicalBusiness</span>
-  <span property="rdfs:comment">A particular physical or virtual business of an organization for medical purposes. Examples of MedicalBusiness include differents busness run by health professionals.</span>
+  <span property="rdfs:comment">A particular physical or virtual business of an organization for medical purposes. Examples of MedicalBusiness include differents business run by health professionals.</span>
   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/LocalBusiness">schema:LocalBusiness</a></span>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
 </div>
@@ -1262,7 +1262,7 @@
 
 <div typeof="rdfs:Class" resource="http://schema.org/MedicalSymptom">
   <span class="h" property="rdfs:label"> health:MedicalSymptom</span>
-  <span property="rdfs:comment">Any complain sensed and expressed by the patient (therefore defined as subjective)  like stomachache, lower-back pain, or fatigue.</span>
+  <span property="rdfs:comment">Any complaint sensed and expressed by the patient (therefore defined as subjective)  like stomachache, lower-back pain, or fatigue.</span>
   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalSignOrSymptom"> health:MedicalSignOrSymptom</a></span>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
 </div>
@@ -1369,14 +1369,6 @@
   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/Person"> schema:Person</a></span>
 </div>
 
-<div typeof="rdfs:Class" resource="http://schema.org/Pharmacy">
-  <span class="h" property="rdfs:label"> health:Pharmacy</span>
-  <span property="rdfs:comment">A pharmacy or drugstore.</span>
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalOrganization"> health:MedicalOrganization</a></span>
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalBusiness"> health:MedicalBusiness</a></span>
-  <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-</div>
-
 <div typeof="rdfs:Class" resource="http://schema.org/PhysicalExam">
   <span class="h" property="rdfs:label"> health:PhysicalExam</span>
   <span property="rdfs:comment">A type of physical examination of a patient performed by a physician. </span>
@@ -1389,14 +1381,6 @@
   <span class="h" property="rdfs:label"> health:PhysicalTherapy</span>
   <span property="rdfs:comment">A process of progressive physical care and rehabilitation aimed at improving a health condition.</span>
   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalTherapy">health:MedicalTherapy</a></span>
-  <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-</div>
-
-<div typeof="rdfs:Class" resource="http://schema.org/Physician">
-  <span class="h" property="rdfs:label"> health:Physician</span>
-  <span property="rdfs:comment">A doctor's office.</span>
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalOrganization"> health:MedicalOrganization</a></span>
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalBusiness"> health:MedicalBusiness</a></span>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
 </div>
 
@@ -1419,13 +1403,6 @@
   <span property="rdfs:comment">A process of care using radiation aimed at improving a health condition.</span>
   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalTherapy">health:MedicalTherapy</a></span>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-</div>
-
-<div typeof="rdfs:Class" resource="http://schema.org/Radiography">
-  <span class="h" property="rdfs:label"> health:Radiography</span>
-  <span property="rdfs:comment">Radiography is an imaging technique that uses electromagnetic radiation other than visible light, especially X-rays, to view the internal structure of a non-uniformly composed and opaque object such as the human body. </span>
-  <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-  <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalImaging"> health:MedicalImaging</a></span>
 </div>
 
 <div typeof="rdfs:Class" resource="http://schema.org/RecommendedDoseSchedule">
@@ -1451,7 +1428,7 @@
 
 <div typeof="rdfs:Class" resource="http://schema.org/SurgicalProcedure">
   <span class="h" property="rdfs:label"> health:SurgicalProcedure</span>
-  <span property="rdfs:comment">A medical procedure involving an incision with instruments; performed for diagnose, or therapeutic purposes</span>
+  <span property="rdfs:comment">A medical procedure involving an incision with instruments; performed for diagnose, or therapeutic purposes.</span>
   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalProcedure"> health:MedicalProcedure</a></span>
   <link property="owl:equivalentClass" href="http://purl.bioontology.org/ontology/SNOMEDCT/387713003"/>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
@@ -1487,7 +1464,7 @@
 
 <div typeof="rdfs:Class" resource="http://schema.org/VitalSign">
   <span class="h" property="rdfs:label"> health:VitalSign</span>
-  <span property="rdfs:comment">Vital signs are measures of various physiological functions in order to assess the most basic body functions</span>
+  <span property="rdfs:comment">Vital signs are measures of various physiological functions in order to assess the most basic body functions.</span>
   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/MedicalSign"> health:MedicalSign</a></span>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
 </div>
@@ -1496,7 +1473,7 @@
 
 <div typeof="rdf:Property" resource="http://schema.org/action">
   <span class="h" property="rdfs:label"> health:action</span>
-  <span property="rdfs:comment">The movement the muscle generates.</span>
+  <span property="rdfs:comment">Obsolete term for [[muscleAction]]. Not to be confused with [[potentialAction]].</span>
   <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Muscle"> health:Muscle</a></span>
   <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text"> schema:Text </a></span>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
@@ -1622,15 +1599,6 @@
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
 </div>
 
-<div typeof="rdf:Property" resource="http://schema.org/totalTime">
-  <span class="h" property="rdfs:label"> health:totalTime</span>
-  <span property="rdfs:comment">The total time it takes to prepare and cook the recipe, in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 duration format</a>.</span>
-  <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/MedicalProcedure"> health:MedicalProcedure</a></span>
-  <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Recipe"> schema:Recipe</a></span>
-  <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Duration"> schema:Duration</a></span>
-  <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-</div>
-
 <div typeof="rdf:Property" resource="http://schema.org/frequency">
   <span class="h" property="rdfs:label">health:frequency</span>
   <span property="rdfs:comment">How often the dose is taken, e.g. &#39;daily&#39;.</span>
@@ -1650,7 +1618,7 @@
 
 <div typeof="rdf:Property" resource="http://schema.org/branch">
   <span class="h" property="rdfs:label"> health:branch</span>
-  <span property="rdfs:comment">The branches that delineate from the nerve bundle.</span>
+  <span property="rdfs:comment">The branches that delineate from the nerve bundle. Not to be confused with [[branchOf]].</span>
   <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Nerve"> health:Nerve</a></span>
   <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/AnatomicalStructure"> health:AnatomicalStructure </a></span>
   <link property="http://schema.org/supersededBy" href="http://schema.org/nerveBranch"/>
@@ -1730,24 +1698,6 @@
   <span property="rdfs:comment">A diagnostic test or procedure offered by this lab.</span>
   <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/DiagnosticLab"> health:DiagnosticLab</a></span>
   <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/MedicalTest"> health:MedicalTest</a></span>
-  <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-</div>
-
-<div typeof="rdf:Property" resource="http://schema.org/birthPlace">
-  <span class="h" property="rdfs:label"> health:birthPlace</span>
-  <span property="rdfs:comment">The place where the person was born.</span>
-  <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Birth">health:Birth</a></span>
-  <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Person"> schema:Person</a></span>
-  <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Place"> schema:Place</a></span>
-  <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-</div>
-
-<div typeof="rdf:Property" resource="http://schema.org/deathPlace">
-  <span class="h" property="rdfs:label">health:deathPlace</span>
-  <span property="rdfs:comment">The place where the person died.</span>
-  <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Death"> health:Death</a></span>
-  <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Person"> schema:Person</a></span>
-  <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Place"> schema:Place</a></span>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
 </div>
 
@@ -1894,14 +1844,6 @@
   <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Drug"> health:Drug</a></span>
   <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/DrugCost"> health:DrugCost</a></span>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-</div>
-
-<div typeof="rdf:Property" resource="http://schema.org/deathPlace">
-  <span class="h" property="rdfs:label"> schema:deathPlace</span>
-  <span property="rdfs:comment">The place where the person died.</span>
-  <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Death"> health:Death</a></span>
-  <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Person"> schema:Person</a></span>
-  <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Place"> schema:Place</a></span>
 </div>
 
 <div typeof="rdf:Property" resource="http://schema.org/diagnosis">
@@ -2447,7 +2389,6 @@
   <span property="rdfs:comment">The anatomical or organ system that this structure is part of.</span>
   <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/AnatomicalStructure"> health:AnatomicalStructure </a></span>
   <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/AnatomicalSystem">health:AnatomicalSystem</a></span>
-  <!-- <span>SubProperty of: <a property="rdfs:subPropertyOf" href="http://schema.org/isPartOf">isPartOf</a></span> FIXME -->
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
 </div>
 
@@ -2586,7 +2527,7 @@
 
 <div typeof="rdf:Property" resource="http://schema.org/publicationType">
   <span class="h" property="rdfs:label"> health:publicationType</span>
-  <span property="rdfs:comment">The type of the medical article, taken from the US NLM MeSH publication type catalog. See: http://www.nlm.nih.gov/mesh/pubtypes.html</span>
+  <span property="rdfs:comment">The type of the medical article, taken from the US NLM MeSH publication type catalog. See also [MeSH documentation](http://www.nlm.nih.gov/mesh/pubtypes.html).</span>
   <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
   <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/MedicalScholarlyArticle"> health:MedicalScholarlyArticle</a></span>
   <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text"> schema:Text </a></span>
@@ -2754,14 +2695,6 @@
   <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Artery">health:Vessel</a></span>
   <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Artery">health:Nerve</a></span>
   <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/AnatomicalStructure"> health:AnatomicalStructure </a></span>
-</div>
-
-<div typeof="rdf:Property" resource="http://schema.org/sponsor">
-<!--  <span class="h" property="rdfs:label"> health:sponsor</span>
-  <span property="rdfs:comment">Sponsor of the study.</span> -->
-  <link property="http://schema.org/isPartOf" href="http://health-lifesci.schema.org" />
-  <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/MedicalStudy"> health:MedicalStudy</a></span>
-  <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Organization"> schema:Organization</a></span>
 </div>
 
 <div typeof="rdf:Property" resource="http://schema.org/stageAsNumber">

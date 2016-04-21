@@ -508,6 +508,13 @@ class DataTypeTests(unittest.TestCase):
       self.assertFalse(Unit.GetUnit("Thing").isDataType())
       self.assertFalse(Unit.GetUnit("Duration").isDataType())
 
+class MarkDownTest(unittest.TestCase):
+    def test_emph(self):
+        from api import MD
+        markstring = "This is _em_, __strong__, ___strong em___"
+        html = MD.parse(markstring,True)
+        self.assertFalse(html != "<p>This is <em>em</em>, <strong>strong</strong>, <strong><em>strong em</em></strong></p>", "Markdown string not formatted correctly")
+
 class HasMultipleBaseTypesTests(unittest.TestCase):
 
     def test_localbusiness2supertypes(self):
@@ -529,7 +536,7 @@ class BasicJSONLDTests(unittest.TestCase):
     def test_issuedBy_jsonld(self):
        import json
        ctx = json.loads(GetJsonLdContext())
-       self.assertFalse( "issuedBy" in ctx["@context"] , "issuedBy should be defined." )
+       self.assertTrue( "issuedBy" in ctx["@context"] , "issuedBy should be defined." )
 
     def test_dateModified_jsonld(self):
        import json
